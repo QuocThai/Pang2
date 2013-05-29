@@ -16,11 +16,10 @@ MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 	//Play menu item coordinates
 	MenuItem playButton;
 	playButton.rect.top = 145;
-	playButton.rect.width = 235;
+	playButton.rect.height = 235;
 	playButton.rect.left = 0;
 	playButton.rect.width = 1023;
-	playButton.action = Exit;
-	playButton.name = "play";
+	playButton.action = Play;
 
 	//Exit menu item coordinates
 	MenuItem exitButton;
@@ -29,7 +28,6 @@ MainMenu::MenuResult MainMenu::Show(sf::RenderWindow& window)
 	exitButton.rect.top = 383;
 	exitButton.rect.height = 200;
 	exitButton.action = Exit;
-	exitButton.name = "exit";
 
 	_menuItems.push_back(exitButton);
 	_menuItems.push_back(playButton);
@@ -52,8 +50,7 @@ MainMenu::MenuResult MainMenu::HandleClick(int x, int y)
 			&& menuItemRect.left < x
 			&& (menuItemRect.left + menuItemRect.width > x))
 		{
-			cout << _menuItems.size()<<endl << it << endl;
-			cout  << (*it).name << " " << x  << " " << y << endl;
+
 			return (*it).action;
 		}
 	}
@@ -70,7 +67,6 @@ MainMenu::MenuResult MainMenu::GetMenuResponse(sf::RenderWindow& window)
 		{
 			if(menuEvent.type == sf::Event::MouseButtonPressed)
 			{
-				cout << "click" << menuEvent.mouseButton.x << " " << menuEvent.mouseButton.y;
 				return HandleClick(menuEvent.mouseButton.x, menuEvent.mouseButton.y);
 			}
 			if (menuEvent.type == sf::Event::Closed)
