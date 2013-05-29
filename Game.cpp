@@ -83,7 +83,6 @@ void Game::ShowMenu()
 	switch(result)
 	{
 	case MainMenu::Play:
-		cout << "play!";
 		_gameState = Game::Playing;
 		break;
 	case MainMenu::Exit:
